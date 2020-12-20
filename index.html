@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--ALL MUSIC COLLECTED VIA https://freemusicarchive.org/curator/Creative_Commons/-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Audio app for final project semester 1">
+    <meta name="author" content="Gabriel Manning-Wildman 101055333">
+    <title>Little Playlist</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/837b18ea79.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <main class="container">
+
+        <section class="audio-wrap">
+            <img src="images/album1.jpg" alt="" width="260" height="190">
+            <div class="audio-desc">
+                <div class="title-wrap">
+                    <div class="title">
+                        <h1>Not Enough</h1>
+                    </div>
+                    <div class="artist">
+                        <h2>TaaPet</h2>
+                    </div>
+                    <div class="like"><i class="far fa-heart"></i></div>
+                    <!-- <i class="fas fa-heart"></i>-->
+                </div>
+                <div class="progress-bar">
+                    <progress class="file" value="10" max="100">10%</progress>
+                    <div class="progress-text">
+                        <span>0:01</span><span>4:28</span>
+                    </div>
+                </div>
+            </div>
+            <div class="audio-tools">
+                <ul class="tool-list">
+                    <li class="tool"><button class="shuffle"><i class="fas fa-random"></i></button></li>
+                    <li class="tool"><button class="back"><i class="fas fa-step-backward"></i></button></li>
+                    <li class="tool"><button class="play"><i class="fas fa-play-circle"></i></button></li>
+                    <!-- <li class="tool"><button class="pause"><i class="fas fa-pause-circle"></i></button></li> -->
+                    <li class="tool"><button class="forward"><i class="fas fa-step-forward"></i></button></li>
+                    <li class="tool"><button class="loop"><i class="fas fa-redo"></i></button></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="playlist-wrap">
+            <div class="playlist-desc">
+                <h4 class="playlist-heading">PLAYLIST</h4>
+                <div class="playlist-info">
+                    <div class="info-item">
+                        <h3 class="playlist-title">Creating</h3>
+                        <span class="total">6 songs</span><span class="duration">23:45 duration</span>
+                    </div>
+                    <div class="options"><i class="fas fa-ellipsis-v"></i></div>
+                </div>
+            </div>
+            <div class="playlist">
+                <div class="playlist-item">
+                    <img src="images/album1.jpg" alt="" width="45" height="45">
+                    <div class="item-content">
+                        <div class="item-text">
+                            <h5>Not Enough</h5>
+                            <h6>TaaPet</h6>
+                        </div>
+                        <span class="length">4:28</span>
+                        <i class="fas fa-play-circle play"></i>
+                    </div>
+                </div>
+                <div class="playlist-item">
+                    <img src="images/album2.jpg" alt="" width="45" height="45">
+                    <div class="item-content">
+                        <div class="item-text">
+                            <h5>Jazz CLub</h5>
+                            <h6>Kriss</h6>
+                        </div>
+                        <span class="length">4:28</span>
+                        <i class="fas fa-play-circle play"></i>
+                    </div>
+                </div>
+                <div class="playlist-item">
+                    <img src="images/album3.jpg" alt="" width="45" height="45">
+                    <div class="item-content">
+                        <div class="item-text">
+                            <h5>Sorry</h5>
+                            <h6>Comfort Fit</h6>
+                        </div>
+                        <span class="length">4:28</span>
+                        <i class="fas fa-play-circle play"></i>
+                    </div>
+                </div>
+                <div class="playlist-item">
+                    <img src="images/album4.jpg" alt="" width="45" height="45">
+                    <div class="item-content">
+                        <div class="item-text">
+                            <h5>Feel</h5>
+                            <h6>Nobara Hayakawa</h6>
+                        </div>
+                        <span class="length">4:28</span>
+                        <i class="fas fa-play-circle play"></i>
+                    </div>
+                </div>
+                <div class="playlist-item">
+                    <img src="images/album5.jpg" alt="" width="45" height="45">
+                    <div class="item-content">
+                        <div class="item-text">
+                            <h5>Swan Song</h5>
+                            <h6>Paper Navy</h6>
+                        </div>
+                        <span class="length">4:28</span>
+                        <i class="fas fa-play-circle play"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wave"></section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
