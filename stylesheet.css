@@ -31,7 +31,7 @@ h2 {
 h3,
 h4,
 .total,
-.duration,
+.playlist-duration,
 .length {
     color: #b9b9b9;
     font-weight: 500;
@@ -126,7 +126,7 @@ main.container {
 }
 
 .audio-wrap .audio-tools .tool button.play,
-.audio-wrap .audio-tools .tool button.pause {
+.audio-wrap .audio-tools .tool button.pause .fa-pause-circle {
     font-size: 45px;
     border-radius: 50%;
     border: 2px solid transparent;
@@ -134,8 +134,8 @@ main.container {
     width: 52px;
 }
 
-.audio-wrap .audio-tools .tool .play:hover,
-.audio-wrap .audio-tools .tool .pause:hover {
+.audio-wrap .audio-tools .tool.play:hover,
+.audio-wrap .audio-tools .tool.pause:hover {
     border: 2px solid #000;
 }
 
@@ -223,7 +223,8 @@ main.container {
     width: 100%;
 }
 
-.playlist-wrap .playlist .playlist-item .item-content .play {
+.playlist-wrap .playlist .playlist-item .item-content .play,
+.item-content .fa-pause-circle {
     font-size: 24px;
     opacity: .3;
 }
