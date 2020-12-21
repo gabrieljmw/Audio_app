@@ -1,6 +1,8 @@
 /*TODO: fix audio counter to display normally(implement)
         fix bug where play button appears on like index item
-        fix bug where play button disappears on main click*/
+        fix bug where play button disappears on main click
+        fix bug where if song is already playing, shuffle will overlap it
+        */
 
 let audioList = {
     audio1: new Audio('audio/taa-pet.mp3'),
