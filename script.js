@@ -23,8 +23,24 @@ playable.forEach((item) => {
                 document.querySelector(`.tool.pause`).classList.remove('hidden')
                 Object.values(audioList)[i].play();
             }
+            let audioVal = Object.values(audioList)[i];
+            audioVal.addEventListener('timeupdate', () => {
+                let progress = document.querySelector('progress');
+                progress.setAttribute("value", audioVal.currentTime);
+                progress.setAttribute("max", audioVal.duration);
+                let currentTimeVal = document.querySelector('.progress-text .currentTime');
+                let maxDuration = document.querySelector('.progress-text .duration');
+                let s = (audioVal.currentTime % 60);
+                let m = (audioVal.currentTime / 60);
+                let durationVal = Math.floor(audioVal.duration / 60) + ":" + Math.ceil(audioVal.duration % 60);
+                currentTimeVal.innerHTML = `${Math.floor(m)}:${Math.ceil(s)}`;
+                maxDuration.innerHTML = durationVal;
+
+            })
         }
-    })
+
+    });
+
 })
 
 let pauseable = document.querySelectorAll('.fas.pause');
@@ -59,7 +75,7 @@ shuffle.addEventListener('click', () => {
 });
 
 
-// this test does work
+// initial slider test
 // let audio1 = new Audio('audio/taa-pet.mp3');
 
 // let play = document.querySelector('.play');
