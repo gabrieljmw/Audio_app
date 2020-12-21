@@ -1,10 +1,5 @@
-//TODO: fix audio counter to display normally
-
-// let audio1 = new Audio('audio/taa-pet.mp3');
-// let audio2 = new Audio('audio/jazz-club.mp3');
-// let audio3 = new Audio('audio/comfort-fit.mp3');
-// let audio4 = new Audio('audio/nobara.mp3');
-// let audio5 = new Audio('audio/paper-navy.mp3');
+/*TODO: fix audio counter to display normally(implement)
+        fix bug where play button appears on like index item*/
 
 let audioList = {
     audio1: new Audio('audio/taa-pet.mp3'),
@@ -16,13 +11,31 @@ let audioList = {
 
 let audioListLen = Object.keys(audioList).length;
 let playable = document.querySelectorAll('.fas.play');
+let pauseable = document.querySelectorAll('.fas.pause');
 
 playable.forEach((item) => {
     item.addEventListener('click', () => {
         for (let i = 0; i < audioListLen; ++i) {
             if (item.getAttribute('data-audio') == Object.keys(audioList)[i]) {
-                item
+                item.classList.add('hidden');
+                document.querySelector('.tool.play').classList.add('hidden');
+                document.querySelector(`.fas.pause[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
+                document.querySelector(`.tool.pause`).classList.remove('hidden')
                 Object.values(audioList)[i].play();
+            }
+        }
+    })
+})
+
+pauseable.forEach((item) => {
+    item.addEventListener('click', () => {
+        for (let i = 0; i < audioListLen; ++i) {
+            if (item.getAttribute('data-audio') == Object.keys(audioList)[i]) {
+                item.classList.add('hidden');
+                document.querySelector('.tool.play').classList.add('hidden');
+                document.querySelector(`.fas.pause[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
+                document.querySelector(`.tool.pause`).classList.remove('hidden')
+                Object.values(audioList)[i].pause();
             }
         }
     })
@@ -54,9 +67,6 @@ playable.forEach((item) => {
 
 //     })
 // });
-
-
-
 
 // let audio1 = new Audio('audio/taa-pet.mp3');
 // let audio2 = new Audio('audio/jazz-club.mp3');
