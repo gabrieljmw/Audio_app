@@ -42,7 +42,7 @@
                     <li class="tool shuffle"><button class="shuffle"><i class="fas fa-random"></i></button></li>
                     <li class="tool back"><button class="back"><i class="fas fa-step-backward"></i></button></li>
                     <li class="tool play playable"><button class="play"><i class="fas fa-play-circle play playable" data-artist="TaaPet" data-track="Not Enough" data-audio="audio1" data-img="images/album1.jpg"></i></button></li>
-                    <li class="tool pause pausaeble hidden"><button class="pause"><i class="fas fa-pause-circle pause pausaeble" data-audio="1"></i></button></li>
+                    <li class="tool pause pausaeble hidden"><button class="pause"><i class="fas fa-pause-circle pause" data-audio="1"></i></button></li>
                     <li class="tool forward"><button class="forward"><i class="fas fa-step-forward"></i></button></li>
                     <li class="tool loop"><button class="loop"><i class="fas fa-redo"></i></button></li>
                 </ul>
@@ -124,8 +124,10 @@
             </div>
         </section>
 
-        <section class="wave"></section>
+        <section id="waveform" class="wave"></section>
     </main>
+    <!--https://wavesurfer-js.org/-->
+    <script src="https://unpkg.com/wavesurfer.js"></script>
     <script src="script.js"></script>
 </body>
 

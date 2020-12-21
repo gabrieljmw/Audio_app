@@ -1,10 +1,12 @@
-/*TODO: fix audio counter to display normally(implement)
-        fix bug where play button appears on like index item
+/*TODO: fix audio counter to display normally(implement) - COMPLETE
+        fix bug where play button appears on similarly indexed item
         fix bug where play button disappears on main click
         fix bug where if song is already playing, shuffle will overlap it
+        clean up html classes to reduce error
         */
 
 window.addEventListener('load', function() {
+
     let audioList = {
         audio1: new Audio('audio/taa-pet.mp3'),
         audio2: new Audio('audio/jazz-club.mp3'),
@@ -16,6 +18,22 @@ window.addEventListener('load', function() {
     let audioListLen = Object.keys(audioList).length;
     let playable = document.querySelectorAll('.fas.play');
 
+    function audioSlider(audioCurrent) {
+        audioCurrent.addEventListener('timeupdate', () => {
+            let progress = document.querySelector('progress');
+            progress.setAttribute("value", audioCurrent.currentTime);
+            progress.setAttribute("max", audioCurrent.duration);
+            let currentTimeVal = document.querySelector('.progress-text .currentTime');
+            let maxDuration = document.querySelector('.progress-text .duration');
+            let s = (audioCurrent.currentTime % 60);
+            let m = (audioCurrent.currentTime / 60);
+            let durationVal = Math.floor(audioCurrent.duration / 60) + ":" + Math.ceil(audioCurrent.duration % 60);
+            currentTimeVal.innerHTML = `${Math.floor(m)}:${Math.ceil(s)}`;
+            maxDuration.innerHTML = durationVal;
+
+        })
+    }
+
     playable.forEach((item) => {
         item.addEventListener('click', () => {
             for (let i = 0; i < audioListLen; ++i) {
@@ -25,21 +43,8 @@ window.addEventListener('load', function() {
                     document.querySelector(`.fas.pause[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
                     document.querySelector(`.tool.pause`).classList.remove('hidden')
                     Object.values(audioList)[i].play();
+                    audioSlider(Object.values(audioList)[i]);
                 }
-                let audioVal = Object.values(audioList)[i];
-                audioVal.addEventListener('timeupdate', () => {
-                    let progress = document.querySelector('progress');
-                    progress.setAttribute("value", audioVal.currentTime);
-                    progress.setAttribute("max", audioVal.duration);
-                    let currentTimeVal = document.querySelector('.progress-text .currentTime');
-                    let maxDuration = document.querySelector('.progress-text .duration');
-                    let s = (audioVal.currentTime % 60);
-                    let m = (audioVal.currentTime / 60);
-                    let durationVal = Math.floor(audioVal.duration / 60) + ":" + Math.ceil(audioVal.duration % 60);
-                    currentTimeVal.innerHTML = `${Math.floor(m)}:${Math.ceil(s)}`;
-                    maxDuration.innerHTML = durationVal;
-
-                })
             }
 
         });
@@ -65,21 +70,27 @@ window.addEventListener('load', function() {
     let isPlaying = false;
     let storedVal;
 
-    let shuffle = document.querySelector('.tool.shuffle');
+    let shuffle = document.querySelector('button.shuffle');
     shuffle.addEventListener('click', () => {
+        shuffle.style.color = "blue";
         if (isPlaying == false) {
             let r = Math.floor(Math.random() * 5) + 1;
             storedVal = r;
             Object.values(audioList)[r].play();
+            audioSlider(Object.values(audioList)[r]);
             isPlaying = true;
         } else {
             location.reload(); //temp cheat
         }
     });
 
-    let like = document.querySelector('.like');
+    let like = document.querySelector('i.far.fa-heart');
     like.addEventListener('click', () => {
-
+        const styles = {
+            color: 'red',
+            fontWeight: '600'
+        };
+        Object.assign(like.style, styles);
     });
 })
 
