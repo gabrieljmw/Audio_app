@@ -3,6 +3,8 @@
         fix bug where play button disappears on main click
         fix bug where if song is already playing, shuffle will overlap it
         clean up html classes to reduce error
+        implement prev and next buttons functionality
+        implement title, artist, and image change on click
         */
 
 window.addEventListener('load', function() {
@@ -14,6 +16,12 @@ window.addEventListener('load', function() {
         audio4: new Audio('audio/nobara.mp3'),
         audio5: new Audio('audio/paper-navy.mp3')
     };
+
+    var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: '#b1b1b1',
+        progressColor: '#e1e1e1'
+    });
 
     let audioListLen = Object.keys(audioList).length;
     let playable = document.querySelectorAll('.fas.play');
@@ -43,6 +51,11 @@ window.addEventListener('load', function() {
                     document.querySelector(`.fas.pause[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
                     document.querySelector(`.tool.pause`).classList.remove('hidden')
                     Object.values(audioList)[i].play();
+                    wavesurfer.load(Object.values(audioList)[i].src);
+                    wavesurfer.on('ready', function() {
+                        wavesurfer.play();
+                        wavesurfer.toggleMute();
+                    });
                     audioSlider(Object.values(audioList)[i]);
                 }
             }
@@ -61,6 +74,10 @@ window.addEventListener('load', function() {
                     document.querySelector(`.tool.play`).classList.remove('hidden');
                     document.querySelector(`.tool.play[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
                     document.querySelector(`.tool.pause`).classList.add('hidden');
+                    wavesurfer.load(Object.values(audioList)[i].src);
+                    wavesurfer.on('ready', function() {
+                        wavesurfer.pause();
+                    });
                     Object.values(audioList)[i].pause();
                 }
             }
@@ -76,6 +93,11 @@ window.addEventListener('load', function() {
         if (isPlaying == false) {
             let r = Math.floor(Math.random() * 5) + 1;
             storedVal = r;
+            wavesurfer.load(Object.values(audioList)[r].src);
+            wavesurfer.on('ready', function() {
+                wavesurfer.play();
+                wavesurfer.toggleMute();
+            });
             Object.values(audioList)[r].play();
             audioSlider(Object.values(audioList)[r]);
             isPlaying = true;

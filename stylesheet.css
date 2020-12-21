@@ -199,7 +199,7 @@ main.container {
     position: relative;
     display: flex;
     align-items: center;
-    margin-bottom: 19px;
+    margin-bottom: 20px;
 }
 
 .playlist-wrap .playlist .playlist-item::after {
@@ -249,4 +249,8 @@ main.container {
 
 i {
     cursor: pointer;
+}
+
+wave {
+    height: 76px !important;
 }
