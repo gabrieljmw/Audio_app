@@ -11,7 +11,6 @@ let audioList = {
 
 let audioListLen = Object.keys(audioList).length;
 let playable = document.querySelectorAll('.fas.play');
-let pauseable = document.querySelectorAll('.fas.pause');
 
 playable.forEach((item) => {
     item.addEventListener('click', () => {
@@ -27,14 +26,14 @@ playable.forEach((item) => {
     })
 })
 
+let pauseable = document.querySelectorAll('.fas.pause');
+
 pauseable.forEach((item) => {
     item.addEventListener('click', () => {
         for (let i = 0; i < audioListLen; ++i) {
             if (item.getAttribute('data-audio') == Object.keys(audioList)[i]) {
                 item.classList.add('hidden');
-                document.querySelector('.tool.play').classList.add('hidden');
-                document.querySelector(`.fas.pause[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
-                document.querySelector(`.tool.pause`).classList.remove('hidden')
+                document.querySelector(`.tool.play[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
                 Object.values(audioList)[i].pause();
             }
         }
