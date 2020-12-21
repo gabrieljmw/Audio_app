@@ -17,6 +17,8 @@ window.addEventListener('load', function() {
         audio5: new Audio('audio/paper-navy.mp3')
     };
 
+    console.log((Object.values(audioList)[0].src).replace('http://127.0.0.1:5500/', ''));
+
     var wavesurfer = WaveSurfer.create({
         container: '#waveform',
         waveColor: '#b1b1b1',
@@ -51,7 +53,7 @@ window.addEventListener('load', function() {
                     document.querySelector(`.fas.pause[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
                     document.querySelector(`.tool.pause`).classList.remove('hidden')
                     Object.values(audioList)[i].play();
-                    wavesurfer.load(Object.values(audioList)[i].src);
+                    wavesurfer.load((Object.values(audioList)[i].src).replace('http://127.0.0.1:5500/', ''));
                     wavesurfer.on('ready', function() {
                         wavesurfer.play();
                         wavesurfer.toggleMute();
@@ -74,7 +76,7 @@ window.addEventListener('load', function() {
                     document.querySelector(`.tool.play`).classList.remove('hidden');
                     document.querySelector(`.tool.play[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
                     document.querySelector(`.tool.pause`).classList.add('hidden');
-                    wavesurfer.load(Object.values(audioList)[i].src);
+                    wavesurfer.load((Object.values(audioList)[i].src).replace('http://127.0.0.1:5500/', ''));
                     wavesurfer.on('ready', function() {
                         wavesurfer.pause();
                     });
