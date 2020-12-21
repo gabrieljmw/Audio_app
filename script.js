@@ -34,14 +34,31 @@ pauseable.forEach((item) => {
         for (let i = 0; i < audioListLen; ++i) {
             if (item.getAttribute('data-audio') == Object.keys(audioList)[i]) {
                 item.classList.add('hidden');
+                document.querySelector(`.tool.play`).classList.remove('hidden');
                 document.querySelector(`.tool.play[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
                 document.querySelector(`.tool.pause`).classList.add('hidden');
-                document.querySelector(`.tool.play`).classList.remove('hidden');
                 Object.values(audioList)[i].pause();
             }
         }
     })
 })
+
+let isPlaying = false;
+let r = Math.floor(Math.random() * 5) + 1;
+let storedval = r;
+
+let shuffle = document.querySelector('.tool.shuffle');
+shuffle.addEventListener('click', () => {
+    if (isPlaying == true) {
+        Object.values(audioList)[storedval].pause();
+        isPlaying = false;
+    } else {
+        isPlaying = true;
+        let r = Math.floor(Math.random() * 5) + 1;
+        Object.values(audioList)[r].play();
+    }
+});
+
 
 // this test does work
 // let audio1 = new Audio('audio/taa-pet.mp3');
