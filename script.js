@@ -1,5 +1,6 @@
 /*TODO: fix audio counter to display normally(implement)
-        fix bug where play button appears on like index item*/
+        fix bug where play button appears on like index item
+        fix bug where play button disappears on main click*/
 
 let audioList = {
     audio1: new Audio('audio/taa-pet.mp3'),
@@ -34,14 +35,16 @@ pauseable.forEach((item) => {
             if (item.getAttribute('data-audio') == Object.keys(audioList)[i]) {
                 item.classList.add('hidden');
                 document.querySelector(`.tool.play[data-audio="${Object.keys(audioList)[i]}"]`).classList.remove('hidden');
+                document.querySelector(`.tool.pause`).classList.add('hidden');
+                document.querySelector(`.tool.play`).classList.remove('hidden');
                 Object.values(audioList)[i].pause();
             }
         }
     })
 })
 
-
-
+// this test does work
+// let audio1 = new Audio('audio/taa-pet.mp3');
 
 // let play = document.querySelector('.play');
 // let pause = document.querySelector('.pause');
@@ -66,25 +69,3 @@ pauseable.forEach((item) => {
 
 //     })
 // });
-
-// let audio1 = new Audio('audio/taa-pet.mp3');
-// let audio2 = new Audio('audio/jazz-club.mp3');
-// let audio3 = new Audio('audio/comfort-fit.mp3');
-// let audio4 = new Audio('audio/nobara.mp3');
-// let audio5 = new Audio('audio/paper-navy.mp3');
-
-// let playAudio1 = document.querySelector('[data-audio="1"]');
-// let pauseAudio1 = document.querySelector('[data-audio="1p"]');
-
-// playAudio1.addEventListener('click', () => {
-//     audio1.play();
-//     playAudio1.classList.add('hidden');
-//     pauseAudio1.classList.remove('hidden');
-// })
-
-
-// playAudio1.addEventListener('click', () => {
-//     audio1.play();
-//     playAudio1.classList.add('hidden');
-//     pauseAudio1.classList.remove('hidden');
-// })
