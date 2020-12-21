@@ -43,14 +43,19 @@ pauseable.forEach((item) => {
     })
 })
 
-let count;
+let isPlaying = false;
+let storedVal;
 
 let shuffle = document.querySelector('.tool.shuffle');
 shuffle.addEventListener('click', () => {
-    location.reload();
-    let r = Math.floor(Math.random() * 5) + 1;
-    count++;
-    Object.values(audioList)[r].play();
+    if (isPlaying == false) {
+        let r = Math.floor(Math.random() * 5) + 1;
+        storedVal = r;
+        Object.values(audioList)[r].play();
+        isPlaying = true;
+    } else {
+        location.reload(); //temp cheat
+    }
 });
 
 
